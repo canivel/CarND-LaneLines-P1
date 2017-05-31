@@ -21,25 +21,31 @@ The goals / steps of this project are the following:
 
 
 My pipeline consisted of 6 steps explained in the past lessons:
-	 1) converted the images to grayscale 
-	 2) apply gaussian 
-	 3) define Canny and apply 
-	 4) define the vertices to mask 
-	 5) mask the edges 
-	 6) define the Hough transform and run it on edge detected image
-	In order to draw a single line on the left and right lanes, I modified the draw_lines() function by: 
-	 1)Find the left and right lines and group them 
-	 2)Find the slope and intercept averages 
-	 3)calculate min and max of X 4)draw it
+* converted the images to grayscale 
+* apply gaussian 
+* define Canny and apply 
+* define the vertices to mask 
+* mask the edges 
+* define the Hough transform and run it on edge detected image
+
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by: 
+* Find the left and right lines and group them 
+* Find the slope and intercept averages 
+* calculate min and max of X 
+* draw the line
 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when resolution is bad because of weather like fog for example, 
-curves will fail, and probably will need a higher fps camera to stop the flikering.
-
+Some of the potential fails would be:
+* if the image resolution is bad because of weather like with fog, shadowns, for example, the algo does not have any noise reduction filter for that 
+* curves will fail
+* tree shadows or another car changing lanes right in front of our car
 
 ### 3. Suggest possible improvements to your pipeline
 
-High FPS camera, for better transition between imagens will have better results Tunning the parameters, 
-like create a simple model for training and apply a some kind of gridsearch to it.
+* High FPS camera, for better transition between imagens will have better results
+* Tunning the parameters.
+* modify the image mask to limit the detection range
+* limit the slope value to avoid jitter lines
+* only search for white and yellow lines
